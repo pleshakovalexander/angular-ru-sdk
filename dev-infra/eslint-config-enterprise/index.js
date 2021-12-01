@@ -2,7 +2,13 @@
  * @type {import('eslint').Linter.Config}
  */
 module.exports = {
-    extends: ['./scope/base.js', './scope/ignore-patterns.js', './scope/spell-check.js'],
+    extends: [
+        './rules/base',
+        './rules/base-typescript',
+        './rules/html',
+        './rules/ignore-patterns',
+        './rules/spell-check'
+    ],
     overrides: [
         {
             files: ['*.ts'],
@@ -35,9 +41,6 @@ module.exports = {
                 '@angular-ru/eslint-plugin-enterprise'
             ],
             extends: [
-                'eslint:recommended',
-                'plugin:@typescript-eslint/eslint-recommended',
-                'plugin:@typescript-eslint/recommended',
                 'plugin:import/warnings',
                 'plugin:import/typescript',
                 'plugin:json/recommended',
@@ -712,14 +715,6 @@ module.exports = {
                 'mocha/no-setup-in-describe': 'off',
                 'mocha/no-hooks-for-single-case': 'off',
                 'mocha/prefer-arrow-callback': 'error'
-            }
-        },
-        {
-            files: ['*.html'],
-            plugins: ['html'],
-            settings: {
-                'html/indent': '+4',
-                'html/report-bad-indent': 'error'
             }
         },
         {
