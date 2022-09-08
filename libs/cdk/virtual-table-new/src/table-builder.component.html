@@ -1,0 +1,56 @@
+<div class="virtual-table">
+    <div class="virtual-table__header">
+        <mat-form-field>
+            <mat-label>Enter a search request</mat-label>
+            <input
+                matInput
+                type="text"
+            />
+            <mat-icon matPrefix>search</mat-icon>
+        </mat-form-field>
+        <button mat-button>
+            <mat-icon>calendar_today</mat-icon>
+            <mat-label>Date start</mat-label>
+        </button>
+        <button mat-button>
+            <mat-icon>calendar_today</mat-icon>
+            <mat-label>Date end</mat-label>
+        </button>
+        <button mat-button>
+            <mat-icon>filter_alt</mat-icon>
+            <mat-label>Filter</mat-label>
+        </button>
+        `
+    </div>
+    <table class="virtual-table__grid">
+        <thead>
+            <tr class="virtual-table__header-row">
+                <th
+                    *ngFor="let column of computedColumns$ | async"
+                    class="virtual-table__header-cell"
+                >
+                    <ng-container *ngTemplateOutlet="column.header?.templateRef ?? null"></ng-container>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let row of data"
+                class="virtual-table__body-row"
+            >
+                <td
+                    *ngFor="let column of computedColumns$ | async"
+                    class="virtual-table__body-cell"
+                >
+                    <ng-container
+                        *ngTemplateOutlet="
+                            column.body?.templateRef ?? null;
+                            context: { $implicit: row[column.key], row: row }
+                        "
+                    ></ng-container>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="virtual-table__footer"></div>
+</div>
