@@ -15,7 +15,7 @@ export class SampleFirstComponent implements OnInit, OnDestroy {
     public width: string = '100%';
     public height: Nullable<number> = null;
     public rowHeight: Nullable<string> = null;
-    public dataSize: string = '100x20';
+    public dataSize: string = '10x5';
     public loading: boolean = false;
     public simple: PlainObject[] = [];
     public regenerate: boolean = false;
@@ -74,7 +74,7 @@ export class SampleFirstComponent implements OnInit, OnDestroy {
         switch (this.dataSize) {
             case '10x5':
                 {
-                    const rows: number = 10;
+                    const rows: number = 5;
                     const cols: number = 5;
 
                     MocksGenerator.generator(rows, cols).then((data: PlainObject[]): void => this.setData(data));

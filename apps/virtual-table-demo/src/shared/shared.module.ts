@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TableBuilderModule } from '@angular-ru/cdk/virtual-table';
+import { TableBuilderModuleNew } from '@angular-ru/cdk/virtual-table-new';
 
 import { CodeDialogComponent } from './dialog/code-dialog.component';
 import { DialogTemplateComponent } from './dialog-template/dialog-template.component';
@@ -27,6 +28,7 @@ import { DialogTemplateComponent } from './dialog-template/dialog-template.compo
 @NgModule({
     imports: [
         TableBuilderModule.forRoot(),
+        TableBuilderModuleNew.forRoot(),
         CommonModule,
         FormsModule,
         MatButtonModule,
@@ -57,6 +59,7 @@ import { DialogTemplateComponent } from './dialog-template/dialog-template.compo
         MatToolbarModule,
         ScrollingModule,
         TableBuilderModule,
+        TableBuilderModuleNew,
         MatMenuModule
     ]
 })

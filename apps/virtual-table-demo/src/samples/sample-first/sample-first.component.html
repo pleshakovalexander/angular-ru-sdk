@@ -1,89 +1,51 @@
-<div #header>
-    <mat-toolbar class="simple-toolbar">
-        <span>Virtual scroll table</span>
-        <mat-spinner
-            *ngIf="loading"
-            strokeWidth="5"
-            class="spinner"
-            [diameter]="30"
-        ></mat-spinner>
-    </mat-toolbar>
+<mat-toolbar class="simple-toolbar">
+    <span>Example new table</span>
+</mat-toolbar>
 
-    <form>
-        <mat-form-field>
-            <mat-label>Data size</mat-label>
-            <mat-select
-                [(value)]="dataSize"
-                (selectionChange)="updateTable()"
-            >
-                <mat-option value="10x5">10 x 5</mat-option>
-                <mat-option value="100x20">100 x 20</mat-option>
-                <mat-option value="1000x30">1000 x 30</mat-option>
-                <mat-option value="10000x50">10 000 x 50</mat-option>
-                <mat-option value="100000x100"><span class="red">100 000 x 100 (1.5Gb memory usage)</span></mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>Table width</mat-label>
-            <label>
-                <input
-                    matInput
-                    name="width"
-                    [(ngModel)]="width"
-                />
-            </label>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>Table height (px)</mat-label>
-            <label>
-                <input
-                    matInput
-                    name="height"
-                    type="number"
-                    [(ngModel)]="height"
-                />
-            </label>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>Table row height</mat-label>
-            <label>
-                <input
-                    matInput
-                    name="rowHeight"
-                    type="number"
-                    [(ngModel)]="rowHeight"
-                />
-            </label>
-        </mat-form-field>
-
-        <mat-checkbox
-            class="regenerate"
-            [ngModelOptions]="{ standalone: true }"
-            [(ngModel)]="regenerate"
-        >
-            Auto regenerate (15sec)
-        </mat-checkbox>
-
-        <button
-            mat-raised-button
-            (click)="showSample()"
-        >
-            show code sample
-        </button>
-    </form>
-</div>
-
-<div
-    class="content-visible"
-    [style.height]="'calc(100% - ' + header.offsetHeight + 'px)'"
+<table-builder
+    #table
+    [data]="[
+        {
+            'Название стобца А': 'Обычный текст a1',
+            'Название стобца Б': 'Обычный текст б1',
+            'Название стобца В': 'Обычный текст в1',
+            'Название стобца Г': 'Обычный текст г1'
+        },
+        {
+            'Название стобца А': 'Обычный текст a2',
+            'Название стобца Б': 'Обычный текст б2',
+            'Название стобца В': 'Обычный текст в2',
+            'Название стобца Г': 'Обычный текст г2'
+        },
+        {
+            'Название стобца А': 'Обычный текст a3',
+            'Название стобца Б': 'Обычный текст б3',
+            'Название стобца В': 'Обычный текст в3',
+            'Название стобца Г': 'Обычный текст г3'
+        },
+        {
+            'Название стобца А': 'Обычный текст a4',
+            'Название стобца Б': 'Обычный текст б4',
+            'Название стобца В': 'Обычный текст в4',
+            'Название стобца Г': 'Обычный текст г4'
+        },
+        {
+            'Название стобца А': 'Обычный текст a5',
+            'Название стобца Б': 'Обычный текст б5',
+            'Название стобца В': 'Обычный текст в5',
+            'Название стобца Г': 'Обычный текст г5'
+        }
+    ]"
 >
-    <ngx-table-builder
-        [source]="simple"
-        [width]="width"
-        [height]="height"
-        [row-height]="rowHeight"
-    ></ngx-table-builder>
-</div>
+    <table-column
+        *ngFor="let columnKey of table.keysOfDataSource"
+        [key]="columnKey"
+    >
+        <div *tableHeaderCell>
+            {{ columnKey }}
+        </div>
+        <div *tableBodyCell="let value; row as row">
+            {{ value }}
+        </div>
+    </table-column>
+</table-builder>
