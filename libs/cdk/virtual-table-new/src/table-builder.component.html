@@ -1,26 +1,45 @@
 <div class="virtual-table">
     <div class="virtual-table__header">
-        <mat-form-field>
-            <mat-label>Enter a search request</mat-label>
-            <input
-                matInput
-                type="text"
-            />
-            <mat-icon matPrefix>search</mat-icon>
-        </mat-form-field>
-        <button mat-button>
-            <mat-icon>calendar_today</mat-icon>
-            <mat-label>Date start</mat-label>
-        </button>
-        <button mat-button>
-            <mat-icon>calendar_today</mat-icon>
-            <mat-label>Date end</mat-label>
-        </button>
-        <button mat-button>
-            <mat-icon>filter_alt</mat-icon>
-            <mat-label>Filter</mat-label>
-        </button>
-        `
+        <div class="virtual-table__header-container virtual-table__header-container--left">
+            <mat-form-field floatLabel="never">
+                <mat-label>Enter a search request</mat-label>
+                <input
+                    matInput
+                    type="text"
+                />
+                <mat-icon
+                    matPrefix
+                    class="material-icons-outlined"
+                >
+                    search_outline
+                </mat-icon>
+            </mat-form-field>
+            <button mat-button>
+                <mat-icon class="material-icons-outlined">calendar_today</mat-icon>
+                <mat-label>Date start</mat-label>
+            </button>
+            <button mat-button>
+                <mat-icon class="material-icons-outlined">calendar_today</mat-icon>
+                <mat-label>Date end</mat-label>
+            </button>
+            <button mat-button>
+                <mat-icon class="material-icons-outlined">filter_alt</mat-icon>
+                <mat-label>Filter</mat-label>
+            </button>
+        </div>
+        <div class="virtual-table__header-container virtual-table__header-container--right">
+            <button mat-button>
+                <mat-icon class="material-icons-outlined">file_download</mat-icon>
+                <mat-label>Export</mat-label>
+            </button>
+            <button mat-button>
+                <mat-icon class="material-icons-outlined">space_dashboard</mat-icon>
+                <mat-label>Settings</mat-label>
+            </button>
+            <button mat-button>
+                <mat-icon class="material-icons-outlined">fullscreen</mat-icon>
+            </button>
+        </div>
     </div>
     <table class="virtual-table__grid">
         <thead>
@@ -52,5 +71,10 @@
             </tr>
         </tbody>
     </table>
-    <div class="virtual-table__footer"></div>
+    <div class="virtual-table__footer">
+        <mat-paginator
+            [length]="100"
+            (page)="pageEvent = $event"
+        ></mat-paginator>
+    </div>
 </div>

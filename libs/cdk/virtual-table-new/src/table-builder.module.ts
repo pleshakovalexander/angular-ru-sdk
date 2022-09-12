@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { TableColumnComponent } from './components/table-column/table-column.component';
 import { TableBodyCellDirective } from './directives/table-body-cell.directive';
@@ -11,7 +12,7 @@ import { TableHeaderCellDirective } from './directives/table-header-cell.directi
 import { TableBuilderComponent } from './table-builder.component';
 
 @NgModule({
-    imports: [CommonModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule],
+    imports: [CommonModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatPaginatorModule],
     exports: [TableBuilderComponent, TableColumnComponent, TableHeaderCellDirective, TableBodyCellDirective],
     declarations: [TableBuilderComponent, TableColumnComponent, TableBodyCellDirective, TableHeaderCellDirective]
 })

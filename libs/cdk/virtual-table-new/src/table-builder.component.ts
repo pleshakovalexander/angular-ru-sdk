@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, ContentChildren, Input, QueryList } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { defer, map, Observable, startWith } from 'rxjs';
 
 import { TableColumnComponent } from './components/table-column/table-column.component';
@@ -19,6 +20,8 @@ export class TableBuilderComponent {
 
     @ContentChildren(TableColumnComponent) public columns!: QueryList<TableColumnComponent>;
     @Input() public data: any[] = [];
+
+    public pageEvent!: PageEvent;
 
     public computedColumns$: Observable<TableColumnComponent[]> = this.columns$.pipe(
         map((columns: TableColumnComponent[]): TableColumnComponent[] => [
